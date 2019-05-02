@@ -3,15 +3,10 @@ def daysBetweenDates(year1, month1, day1, year2, month2, day2):
     Calculates the number of days between two dates.
     """
 
-    # days = number of days in month1 - day1
-    # month1 += 1
-    # while month1 < month2:
-        # days += number of days in month1
-        # month1 += 1
-    # days += day2
-    # while year1 < year2:
-        # days += number of days in that year
-
+    # days = 0
+    # while date1 is before date2:
+        # date1 = advance to next day
+        # days += 1
     # return days
 
 def testDaysBetweenDates():
