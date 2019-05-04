@@ -1,30 +1,54 @@
+# Define a daysBetweenDates procedure that would produce the
+# correct output if there was a correct nextDay procedure.
+#
+# Note that this will NOT produce correct outputs yet, since
+# our nextDay procedure assumes all months have 30 days
+# (hence a year is 360 days, instead of 365).
+#
+
+def nextDay(year, month, day):
+    """Simple version: assume every month has 30 days"""
+    if day < 30:
+        return year, month, day + 1
+    else:
+        if month == 12:
+            return year + 1, 1, 1
+        else:
+            return year, month + 1, 1
+
 def daysBetweenDates(year1, month1, day1, year2, month2, day2):
-    """
-    Calculates the number of days between two dates.
-    """
+    """Returns the number of days between year1/month1/day1
+       and year2/month2/day2. Assumes inputs are valid dates
+       in Gregorian calendar, and the first date is not after
+       the second."""
 
-    # days = 0
-    # while date1 is before date2:
-        # date1 = advance to next day
-        # days += 1
-    # return days
+    # YOUR CODE HERE!
+    days = 0
+    current_date = year1, month1, day1
+    target_date = year2, month2, day2
+    print("before while", current_date)
+    while current_date != target_date:
+       next_day = nextDay(year1, month1, day1)
+       day1 = next_day[2]
+       month1 = next_day[1]
+       year1 = next_day[0]
+       current_date = year1, month1, day1
+       days += 1
+       print(next_day)
+       print("current date: ", current_date)
+    return days
 
-def testDaysBetweenDates():
 
-    # test same day
-    assert(daysBetweenDates(2017, 12, 30,
-                              2017, 12, 30) == 0)
-    # test adjacent days
-    assert(daysBetweenDates(2017, 12, 30,
-                              2017, 12, 31) == 1)
-    # test new year
-    assert(daysBetweenDates(2017, 12, 30,
-                              2018, 1,  1)  == 2)
-    # test full year difference
-    assert(daysBetweenDates(2012, 6, 29,
-                              2013, 6, 29)  == 365)
+def test():
+    test_cases = [((2012,9,30,2012,10,30),30),
+                  ((2012,1,1,2013,1,1),360),
+                  ((2012,9,1,2012,9,4),3)]
 
-    print("Congratulations! Your daysBetweenDates")
-    print("function is working correctly!")
+    for (args, answer) in test_cases:
+        result = daysBetweenDates(*args)
+        if result != answer:
+            print ("Test with data:", args, "failed")
+        else:
+            print ("Test case passed!")
 
-testDaysBetweenDates()
+test()
