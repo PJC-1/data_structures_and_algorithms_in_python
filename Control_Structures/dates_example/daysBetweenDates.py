@@ -6,9 +6,12 @@
 # (hence a year is 360 days, instead of 365).
 #
 
+def daysInMonth(year, month):
+    return 30
+
 def nextDay(year, month, day):
     """Simple version: assume every month has 30 days"""
-    if day < 30:
+    if day < daysInMonth(year, month):
         return year, month, day + 1
     else:
         if month == 12:
@@ -36,7 +39,6 @@ def daysBetweenDates(year1, month1, day1, year2, month2, day2):
     days = 0
     current_date = year1, month1, day1
     target_date = year2, month2, day2
-    print("before while", current_date)
     while dateIsBefore(year1, month1, day1, year2, month2, day2):
        next_day = nextDay(year1, month1, day1)
        day1 = next_day[2]
@@ -46,17 +48,25 @@ def daysBetweenDates(year1, month1, day1, year2, month2, day2):
        days += 1
     return days
 
-
 def test():
-    test_cases = [((2012,9,30,2012,10,30),30),
-                  ((2012,1,1,2013,1,1),360),
-                  ((2012,9,1,2012,9,4),3)]
+    # tests with 30-day months
+    assert daysBetweenDates(2013, 1, 1, 2013, 1, 1) == 0
+    assert daysBetweenDates(2013, 1, 1, 2013, 1, 2) == 1
+    assert nextDay(2013, 1, 1) == (2013, 1, 2)
+    assert nextDay(2013, 4, 30) == (2013, 5, 1)
+    assert nextDay(2012, 12, 31) == (2013, 1, 1)
+    print "Tests finished."
 
-    for (args, answer) in test_cases:
-        result = daysBetweenDates(*args)
-        if result != answer:
-            print ("Test with data:", args, "failed")
-        else:
-            print ("Test case passed!")
+# def test():
+#     test_cases = [((2012,9,30,2012,10,30),30),
+#                   ((2012,1,1,2013,1,1),360),
+#                   ((2012,9,1,2012,9,4),3)]
+#
+#     for (args, answer) in test_cases:
+#         result = daysBetweenDates(*args)
+#         if result != answer:
+#             print ("Test with data:", args, "failed")
+#         else:
+#             print ("Test case passed!")
 
 test()
