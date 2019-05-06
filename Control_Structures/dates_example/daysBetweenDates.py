@@ -16,26 +16,34 @@ def nextDay(year, month, day):
         else:
             return year, month + 1, 1
 
+def dateIsBefore(year1, month1, day1, year2, month2, day2):
+    if year1 < year2:
+        return True
+    if year1 == year2:
+        if month1 < month2:
+            return True
+        if month1 == month2:
+            return day1 < day2
+    return False
+
 def daysBetweenDates(year1, month1, day1, year2, month2, day2):
     """Returns the number of days between year1/month1/day1
        and year2/month2/day2. Assumes inputs are valid dates
        in Gregorian calendar, and the first date is not after
        the second."""
-
+    assert not dateIsBefore(year2, month2, day2, year1, month1, day1), "inputs are not valid"
     # YOUR CODE HERE!
     days = 0
     current_date = year1, month1, day1
     target_date = year2, month2, day2
     print("before while", current_date)
-    while current_date != target_date:
+    while dateIsBefore(year1, month1, day1, year2, month2, day2):
        next_day = nextDay(year1, month1, day1)
        day1 = next_day[2]
        month1 = next_day[1]
        year1 = next_day[0]
        current_date = year1, month1, day1
        days += 1
-       print(next_day)
-       print("current date: ", current_date)
     return days
 
 
