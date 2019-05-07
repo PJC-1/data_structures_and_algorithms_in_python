@@ -7,7 +7,14 @@
 #
 
 def daysInMonth(year, month):
-    return 30
+    if month == 1 or month == 3 or month == 5 or month == 7 \
+        or month == 8 or month == 10 or month == 12:
+            return 31
+    else:
+        if month == 2:
+            return 28
+        else:
+            return 30
 
 def nextDay(year, month, day):
     """Simple version: assume every month has 30 days"""
@@ -52,10 +59,13 @@ def test():
     # tests with 30-day months
     assert daysBetweenDates(2013, 1, 1, 2013, 1, 1) == 0
     assert daysBetweenDates(2013, 1, 1, 2013, 1, 2) == 1
+    assert daysBetweenDates(2013, 1, 1, 2014, 1, 1) == 365
     assert nextDay(2013, 1, 1) == (2013, 1, 2)
     assert nextDay(2013, 4, 30) == (2013, 5, 1)
     assert nextDay(2012, 12, 31) == (2013, 1, 1)
-    print "Tests finished."
+    assert nextDay(2013, 2, 28) == (2013, 3, 1)
+    assert nextDay(2013, 9, 30) == (2013, 10, 1)
+    print ("Tests finished.")
 
 # def test():
 #     test_cases = [((2012,9,30,2012,10,30),30),
