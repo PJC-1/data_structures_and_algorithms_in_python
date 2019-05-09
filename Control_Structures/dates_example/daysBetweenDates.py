@@ -21,7 +21,10 @@ def daysInMonth(year, month):
             return 31
     else:
         if month == 2:
-            return 28
+            if isLeapYear(year):
+                return 29
+            else:
+                return 28
         else:
             return 30
 
@@ -69,11 +72,14 @@ def test():
     assert daysBetweenDates(2013, 1, 1, 2013, 1, 1) == 0
     assert daysBetweenDates(2013, 1, 1, 2013, 1, 2) == 1
     assert daysBetweenDates(2013, 1, 1, 2014, 1, 1) == 365
+    assert daysBetweenDates(2012, 1, 1, 2013, 1, 1) == 366
     assert nextDay(2013, 1, 1) == (2013, 1, 2)
     assert nextDay(2013, 4, 30) == (2013, 5, 1)
     assert nextDay(2012, 12, 31) == (2013, 1, 1)
     assert nextDay(2013, 2, 28) == (2013, 3, 1)
     assert nextDay(2013, 9, 30) == (2013, 10, 1)
+    assert nextDay(2012, 2, 28) == (2012, 2, 29)
+
     print ("Tests finished.")
 
 # def test():
