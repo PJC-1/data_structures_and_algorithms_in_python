@@ -1,0 +1,7 @@
+Task0.py => O(1) because the function runs in constant time, relative to its input.
+
+Task1.py => O(n) because the function runs in linear time, where it iterates over texts and calls once.
+
+Task3.py => O(n^2) because of the nested while loop.
+
+Task4.py => 0(n) because the for loop in the numbers_list function and the for-loop later in the script are executed separately.
