@@ -1,7 +1,9 @@
-Task0.py => O(1) because the function runs in constant time, relative to its input.
+Task0.py => O(c) because the function runs in constant time, irrespective of the input size (of texts or calls) the code only performs 2 lines of code (2 print statements).
 
-Task1.py => O(n) because the function runs in linear time, where it iterates over texts and calls once.
+Task1.py => O(n) because the function runs in linear time, where it iterates over texts and calls once. As the input (texts and calls) increase the number of lines increases proportionally.
 
-Task3.py => O(n^2) because of the nested while loop.
+Task2.py => O(n) because all the for loops are ran separately (not nested), giving the function linear time.
 
-Task4.py => 0(n) because the for loop in the numbers_list function and the for-loop later in the script are executed separately.
+Task3.py => O(n log n) for use of the sort method. The for loops in the code do not change the complexity.
+
+Task4.py => O(n log n) for use of the sort method, and because the for loop in the numbers_list function and the for-loop later in the script are executed separately.
