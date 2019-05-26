@@ -20,12 +20,17 @@ class LinkedList:
         node.next = Node(value)
         return
 
+    def to_list(self):
+        out_list = []
+        node = self.head
+        while node:
+            out_list.append(node.value)
+            node = node.next
+        return out_list
+
 linked_list = LinkedList()
 linked_list.append(1)
 linked_list.append(2)
 linked_list.append(4)
-
-node = linked_list.head
-while node:
-    print(node.value)
-    node = node.next
+test = linked_list.to_list()
+print(test)
