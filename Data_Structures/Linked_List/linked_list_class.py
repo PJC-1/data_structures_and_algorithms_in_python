@@ -7,6 +7,14 @@ class LinkedList:
     def __init__(self):
         self.head = None
 
+    def prepend(self, value):
+        if self.head is None:
+            self.head = Node(value)
+            return
+        new_head = Node(value)
+        new_head.next = self.head
+        self.head = new_head
+
     def append(self, value):
         if self.head is None:
             self.head = Node(value)
@@ -18,7 +26,6 @@ class LinkedList:
             node = node.next
 
         node.next = Node(value)
-        return
 
     def to_list(self):
         out_list = []
@@ -31,6 +38,9 @@ class LinkedList:
 linked_list = LinkedList()
 linked_list.append(1)
 linked_list.append(2)
-linked_list.append(4)
+linked_list.append(3)
+linked_list.prepend("c")
+linked_list.prepend("b")
+linked_list.prepend("a")
 test = linked_list.to_list()
 print(test)
