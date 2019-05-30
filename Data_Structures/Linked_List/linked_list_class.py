@@ -27,6 +27,18 @@ class LinkedList:
 
         node.next = Node(value)
 
+    def search(self, value):
+        if self.head is None:
+            return None
+
+        node = self.head
+        while node:
+            if node.value == value:
+                return node
+            node = node.next
+
+        raise ValueError("Value not in the list.")
+
     def to_list(self):
         out_list = []
         node = self.head
