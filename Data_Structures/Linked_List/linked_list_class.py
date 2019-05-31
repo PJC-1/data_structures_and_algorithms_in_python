@@ -39,6 +39,21 @@ class LinkedList:
 
         raise ValueError("Value not in the list.")
 
+    def remove(self, value):
+        if self.head is None:
+            return
+        if self.head.value == value:
+            self.head = self.head.next
+            return
+
+        node = self.head
+        while node.next:
+            if node.next.value == value:
+                node.next = node.next.next
+                return
+            node = node.next
+        raise ValueError("Value not in the list.")
+
     def to_list(self):
         out_list = []
         node = self.head
@@ -54,5 +69,8 @@ linked_list.append(3)
 linked_list.prepend("c")
 linked_list.prepend("b")
 linked_list.prepend("a")
+linked_list.remove("a")
+linked_list.remove("b")
+linked_list.remove("c")
 test = linked_list.to_list()
 print(test)
