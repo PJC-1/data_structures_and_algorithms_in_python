@@ -54,6 +54,14 @@ class LinkedList:
             node = node.next
         raise ValueError("Value not in the list.")
 
+    def pop(self):
+        if self.head is None:
+            return None
+
+        node = self.head
+        self.head = self.head.next
+        return node.value
+
     def to_list(self):
         out_list = []
         node = self.head
@@ -72,5 +80,7 @@ linked_list.prepend("a")
 linked_list.remove("a")
 linked_list.remove("b")
 linked_list.remove("c")
+test_pop = linked_list.pop()
 test = linked_list.to_list()
 print(test)
+print(test_pop)
