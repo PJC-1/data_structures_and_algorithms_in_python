@@ -62,6 +62,27 @@ class LinkedList:
         self.head = self.head.next
         return node.value
 
+    def insert(self, value, pos):
+
+        if pos == 0:
+            self.prepend(value)
+            return
+
+        index = 0
+        node = self.head
+        while node.next and index <= pos:
+            if (pos - 1) == index:
+                new_node = Node(value)
+                new_node.next = node.next
+                node.next = new_node
+                return
+
+            index += 1
+            node = node.next
+        else:
+            self.append(value)
+
+
     def to_list(self):
         out_list = []
         node = self.head
@@ -80,7 +101,6 @@ linked_list.prepend("a")
 linked_list.remove("a")
 linked_list.remove("b")
 linked_list.remove("c")
-test_pop = linked_list.pop()
+linked_list.insert("added to the front", 0)
 test = linked_list.to_list()
 print(test)
-print(test_pop)
