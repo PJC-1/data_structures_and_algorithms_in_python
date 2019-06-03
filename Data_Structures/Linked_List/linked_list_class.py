@@ -82,6 +82,13 @@ class LinkedList:
         else:
             self.append(value)
 
+    def size(self):
+        size = 0
+        node = self.head
+        while node:
+            size += 1
+            node = node.next
+        return size
 
     def to_list(self):
         out_list = []
@@ -103,4 +110,6 @@ linked_list.remove("b")
 linked_list.remove("c")
 linked_list.insert("added to the front", 0)
 test = linked_list.to_list()
+size = linked_list.size()
 print(test)
+print(size)
