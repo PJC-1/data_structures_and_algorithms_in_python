@@ -14,6 +14,12 @@ class Stack:
         self.next_index += 1
         self.num_elements += 1
 
+    def size(self):
+        return self.num_elements
+
+    def is_empty(self):
+        return self.num_elements == 0
+
     def _handle_stack_capacity_full(self):
         old_arr = self.arr
 
