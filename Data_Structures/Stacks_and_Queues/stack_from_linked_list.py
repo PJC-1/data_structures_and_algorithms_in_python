@@ -20,6 +20,15 @@ class Stack:
 
         self.num_elements += 1
 
+    def pop(self):
+        if self.is_empty():
+            return
+
+        value = self.head.value # copy data to a local variable
+        self.head = self.head.next # move head pointer to point to next node (top is removed by doing so)
+        self.num_elements -= 1
+        return value
+    
     def size(self):
         return self.num_elements
 
