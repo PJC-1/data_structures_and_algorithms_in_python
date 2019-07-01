@@ -6,6 +6,13 @@ class Queue:
         self.front_index = -1
         self.queue_size = 0
 
+    def enqueue(self, value):
+        # enqueue new element
+        self.arr[self.next_index] = value
+        self.queue_size += 1
+        self.next_index = (self.next_index + 1) % len(self.arr)
+        if self.front_index == -1:
+            self.front_index = 0
 q = Queue()
 print(q.arr)
 print("Pass" if q.arr == [0, 0, 0, 0, 0, 0, 0, 0, 0, 0] else "Fail")
